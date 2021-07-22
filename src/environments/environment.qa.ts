@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
   key: 'YWxsaW90',
+  translate: 'assets/i18n/',
   rest: {
     login: 'http://localhost:80/auth/login',
     users: 'http://localhost:80/users',

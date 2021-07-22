@@ -1,1 +1,207 @@
 /* You can add global styles to this file, and also import other style files */
+$soft-black: #999999;
+$white: #fff;
+
+@font-face {
+  font-family: "quicksand-regular";
+  src: url("./../src/assets/font/quicksand/Quicksand-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "quicksand-light";
+  src: url("./../src/assets/font/quicksand/Quicksand-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "quicksand-medium";
+  src: url("./../src/assets/font/quicksand/Quicksand-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "quicksand-semibold";
+  src: url("./../src/assets/font/quicksand/Quicksand-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "quicksand-bold";
+  src: url("./../src/assets/font/quicksand/Quicksand-Bold.ttf") format("truetype");
+}
+.font-regular {
+  font-family: "quicksand-regular";
+}
+.font-light {
+  font-family: "quicksand-light";
+}
+.font-medium {
+  font-family: "quicksand-medium";
+}
+.font-semibold {
+  font-family: "quicksand-semibold";
+}
+.font-bold {
+  font-family: "quicksand-bold";
+}
+.break-word {
+  word-wrap: break-word;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  color: $soft-black;
+  @extend .font-light;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend .font-bold;
+}
+input,
+textarea {
+  @extend .font-medium;
+}
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.static {
+  position: static;
+}
+.row {
+  display: flex;
+}
+.row-r {
+  @extend .row;
+  flex-direction: row-reverse;
+}
+.col {
+  @extend .row;
+  flex-direction: column;
+}
+.col-r {
+  @extend .row;
+  flex-direction: column-reverse;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.wrap-r {
+  flex-wrap: wrap-reverse;
+}
+.jyct-center {
+  justify-content: center;
+}
+.jyct-between {
+  justify-content: space-between;
+}
+.jyct-around {
+  justify-content: space-around;
+}
+.jyct-evenly {
+  justify-content: space-evenly;
+}
+.jyct-start {
+  justify-content: flex-start;
+}
+.jyct-end {
+  justify-content: flex-end;
+}
+.self-center {
+  align-self: center;
+}
+.center {
+  place-items: center;
+}
+.right {
+  align-items: flex-end;
+  align-content: flex-end;
+}
+.left {
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.txt-left {
+  text-align: left;
+}
+.txt-center {
+  text-align: center;
+}
+.txt-right {
+  text-align: right;
+}
+.select-none {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.button {
+  outline: none;
+  cursor: pointer;
+  @extend .select-none;
+}
+
+.backdrop {
+  @extend .fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.card {
+  padding: 2rem;
+  box-shadow: 1px 1px 10px rgb(163 177 198 / 80%);
+  border-radius: 1.5rem;
+}
+.input-adapt {
+  @extend .relative;
+  height: 2.2rem;
+  border-radius: 2rem;
+  min-width: 185px;
+  box-shadow: 2px 3px 10px rgb(163 177 198 / 60%), -3px -4px 10px rgb(255 255 255 / 50%);
+  input,
+  label {
+    @extend .absolute;
+    left: 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 0 10%;
+    font-size: 1rem;
+    background: none;
+    transition: all 0.3s linear;
+  }
+  input {
+    top: 90%;
+    transform: translate(0, -90%);
+  }
+  label {
+    @extend .select-none;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  label.adapt-focused {
+    top: 10%;
+    transform: translate(0, -10%);
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+}

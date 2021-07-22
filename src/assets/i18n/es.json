@@ -1,0 +1,14 @@
+{
+  "CODE": "es",
+  "LANG": "Español",
+  "LANGS": [
+    {
+      "name": "Ingés",
+      "value": "en"
+    },
+    {
+      "name": "Español",
+      "value": "es"
+    }
+  ]
+}

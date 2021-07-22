@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   key: 'YWxsaW90',
+  translate: undefined,
   rest: {
     login: 'http://localhost:3000/auth/login',
     users: 'http://localhost:3000/users',

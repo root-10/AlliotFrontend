@@ -1,1 +1,28 @@
-<p>login works!</p>
+<main class="page col jyct-center center">
+  <div class="card">
+    <div class="card-header">
+
+    </div>
+    <div class="card-body">
+      <div class="input-adapt">
+        <label for="user" class="ellipsis" [ngClass]="{ 'adapt-focused': isUserInputFocused === true }">Usuario</label>
+        <input id="user" type="text" [(ngModel)]="form.user" maxlength="50" (focus)="focusedInput('user', true)"
+          (blur)="focusedInput('user', false)">
+      </div>
+      <div class="input-adapt">
+        <label for="pass" class="ellipsis pass"
+          [ngClass]="{ 'adapt-focused': isPasswordInputFocused === true }">Contraseña</label>
+        <input id="pass" [type]="typeInputPassword" [(ngModel)]="form.pass" maxlength="50"
+          (focus)="focusedInput('password', true)" (blur)="focusedInput('password', false)" (keyup.enter)="login()"
+          class="input-show-hide">
+        <span *ngIf="typeInputPassword === 'password'" (click)="typeInputPassword = 'text'" class="button">🙉</span>
+        <span *ngIf="typeInputPassword === 'text'" (click)="typeInputPassword = 'password'" class="button">🙈</span>
+      </div>
+      <button (click)="login()" [disabled]="!form.user && !form.pass" class="adapt m-auto"><span>Ingresar</span></button>
+    </div>
+  </div>
+</main>
+
+<app-modal *ngIf="isLoader">
+  <app-loader [type]="'lds-roller'"></app-loader>
+</app-modal>

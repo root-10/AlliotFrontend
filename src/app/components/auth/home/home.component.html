@@ -1,1 +1,30 @@
-<p>home works!</p>
+<main class="page col jyct-center center" style="padding: 3rem 0;">
+  <div class="card">
+    <div class="card-title">
+      <div class="row jyct-between center">
+        <p style="padding-right: 0.5rem;">Requerimientos</p>
+        <div class="row center jyct-end txt-center">
+          <p style="margin-right: 0.5rem;">Límite: {{ limit }}</p>
+          <div class="col center">
+            <img src="assets/png/upwards-arrow.png" alt="" (click)="changeQuantity('more')" class="button" style="height: 10px;">
+            <img src="assets/png/arrow-pointing-downwards.png" alt="" (click)="changeQuantity('less')" class="button" style="height: 10px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 100%; padding: 2rem; overflow: auto;" class="card-body">
+      <div *ngFor="let requirement of requirements" class="card-item" style="background: palegoldenrod; display: block; overflow: auto;">
+        <h2>{{ requirement.id }} {{ requirement.title }}</h2>
+        <p>{{ requirement.creation_date }}</p>
+      </div>
+    </div>
+  </div>
+  <ul class="row">
+    <li *ngFor="let page of [].constructor(pages); let x = index;">
+      <a (click)="goToPage(x + 1)" class="button" style="margin: 0 0.5rem" [ngClass]="{ 'font-bold': currentPage === x + 1 }">{{ x + 1 }}</a>
+    </li>
+  </ul>
+</main>
+<app-modal *ngIf="isLoader">
+  <app-loader [type]="'lds-roller'"></app-loader>
+</app-modal>

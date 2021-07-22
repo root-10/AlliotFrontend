@@ -167,15 +167,35 @@ textarea {
   z-index: 1;
 }
 .card {
-  padding: 2rem;
   box-shadow: 1px 1px 10px rgb(163 177 198 / 80%);
   border-radius: 1.5rem;
+  .card-title {
+    display: block;
+    overflow: auto;
+    padding: 0 1.5rem;
+    border-radius: 1.5rem 1.5rem 0 0;
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "quicksand-bold";
+    }
+  }
+  .card-body {
+    padding: 0 1.5rem;
+    border-radius: 0 0 1.5rem 1.5rem;
+  }
 }
 .input-adapt {
   @extend .relative;
+  margin: auto;
   height: 2.2rem;
   border-radius: 2rem;
   min-width: 185px;
+  max-width: 230px;
   box-shadow: 2px 3px 10px rgb(163 177 198 / 60%), -3px -4px 10px rgb(255 255 255 / 50%);
   input,
   label {

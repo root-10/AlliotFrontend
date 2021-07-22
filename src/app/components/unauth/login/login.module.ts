@@ -32,7 +32,6 @@ export function loginTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ModalModule,
     LoaderModule
-
   ]
 })
 export class LoginModule { }

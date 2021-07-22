@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CryptojsService {
+
   readonly KEY: string = this.decode(environment.key);
 
   constructor() { }
@@ -20,7 +21,7 @@ export class CryptojsService {
 
   decryptStorage(key: string): any {
     try {
-      return localStorage.getItem(key) ? JSON.parse(Cryptojs.AES.decrypt(localStorage.getItem(key)?.trim() || '', this.KEY).toString(Cryptojs.enc.Utf8)) : '';
+      return localStorage.getItem(key) ? JSON.parse(Cryptojs.AES.decrypt(localStorage.getItem(key)?.trim() || '', this.KEY).toString(Cryptojs.enc.Utf8)) : '';
     } catch (e) {
       throw new Error(e);
     }
@@ -33,4 +34,5 @@ export class CryptojsService {
   decode(encoded: string): any {
     return Cryptojs.enc.Utf8.stringify(Cryptojs.enc.Base64.parse(encoded));
   }
+
 }

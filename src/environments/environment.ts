@@ -10,6 +10,7 @@ export const environment = {
     login: 'http://localhost:3000/auth/login',
     users: 'http://localhost:3000/users',
     requirements: 'http://localhost:3000/requirements',
+    requirements_quantity: 'http://localhost:3000/requirements/quantity',
     requirements_comments: 'http://localhost:3000/requirements/comments',
     requirements_votes: 'http://localhost:3000/requirements/vote'
   }

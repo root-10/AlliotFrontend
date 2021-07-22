@@ -1,9 +1,9 @@
 <main class="page col jyct-center center">
-  <div class="card">
-    <div class="card-header">
-
+  <div class="card" style="width: 80%; max-width: 300px;">
+    <div class="card-title" style="background: url('assets/jpg/fondo-banner-alliot.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+      <img src="assets/gif/alliot-retina.gif" alt="" style="width: 100%; margin: 1rem auto; display: inline-block; vertical-align: middle;">
     </div>
-    <div class="card-body">
+    <div class="card-body" style="padding: 1.5rem;">
       <div class="input-adapt">
         <label for="user" class="ellipsis" [ngClass]="{ 'adapt-focused': isUserInputFocused === true }">Usuario</label>
         <input id="user" type="text" [(ngModel)]="form.user" maxlength="50" (focus)="focusedInput('user', true)"

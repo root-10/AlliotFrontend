@@ -1,0 +1,31 @@
+.card {
+  width: 80%;
+  max-width: 500px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .card-title {
+    background: #f2f2f2;
+  }
+  .card-body {
+    background: #fcfcfc;
+    padding: 1rem;
+  }
+  .card-item {
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+  }
+  .card-item + .card-item,
+  .card + ul {
+    margin-top: 1rem;
+  }
+}
+ul {
+  padding: 0;
+  list-style: none;
+  li  {
+    a {
+      text-decoration: none;
+    }
+  }
+}

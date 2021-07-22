@@ -127,6 +127,16 @@ export class RestService {
     });
   }
 
+  getRequirementsQuantity(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._httpClient.post(environment.rest.requirements_quantity, {}).subscribe((value: any) => {
+        resolve(value);
+      }, (err: any) => {
+        reject(err);
+      });
+    });
+  }
+
   // Requirements Comments solicitudes
 
   createRequirementComments(id: number, creator: number, description: string): Promise<any> {
@@ -170,5 +180,5 @@ export class RestService {
       });
     });
   }
-  
+
 }

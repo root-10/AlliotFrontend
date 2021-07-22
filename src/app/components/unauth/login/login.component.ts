@@ -10,6 +10,7 @@ import { RestService } from 'src/app/services/rest/rest.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
   isLoader: boolean = false;
   form: Login = {
     user: '',

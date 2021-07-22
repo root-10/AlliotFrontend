@@ -4,7 +4,14 @@
 
 export const environment = {
   production: false,
-  key: 'alliot'
+  key: 'YWxsaW90',
+  rest: {
+    login: 'http://localhost:3000/auth/login',
+    users: 'http://localhost:3000/users',
+    requirements: 'http://localhost:3000/requirements',
+    requirements_comments: 'http://localhost:3000/requirements/comments',
+    requirements_votes: 'http://localhost:3000/requirements/vote'
+  }
 };
 
 /*

@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   key: 'YWxsaW90',
   rest: {
     login: 'http://localhost:80/auth/login',

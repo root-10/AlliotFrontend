@@ -12,6 +12,7 @@ import { HomeComponent } from './home.component';
 import { environment } from 'src/environments/environment';
 import { ModalModule } from '../../shared/modal/modal.module';
 import { LoaderModule } from '../../shared/loader/loader.module';
+import { HeaderModule } from '../../shared/header/header.module';
 
 export function loginTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, environment.translate, '.json');
@@ -34,6 +35,7 @@ export function loginTranslateLoader(http: HttpClient): TranslateHttpLoader {
     FormsModule,
     ModalModule,
     LoaderModule,
+    HeaderModule,
     CKEditorModule
   ]
 })

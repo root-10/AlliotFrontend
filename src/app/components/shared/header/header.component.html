@@ -1,1 +1,30 @@
-<p>header works!</p>
+<header>
+  <nav style="background: black; padding: 0.5rem 1.2rem 0.5rem 0.5rem">
+    <ul class="row jyct-between center"
+      style="height: 40px; max-width: 720px; margin: 0 auto; list-style: none; padding: 0;">
+      <li>
+        <img src="../../../../assets/gif/alliot-retina.gif" alt="" class="img-m">
+      </li>
+      <li class="relative">
+        <img src="assets/svg/id-card.svg" alt="" (click)="isUserModalVisible = !isUserModalVisible" class="img-m">
+        <div *ngIf="isUserModalVisible" class="user-modal">
+          <div class="user-triangle"></div>
+          <ul class="break-word" style="list-style: none; margin: 0; padding: 0;">
+            <li class="txt-center font-bold" style="font-size: 1.3em">
+              {{ user?.user }}
+            </li>
+            <li class="txt-center" style="font-size: 0.9em">
+              Email: {{ user?.email }}
+            </li>
+            <li class="txt-center" style="font-size: 0.9em">
+              Login: <span class="font-medium">{{ user?.login_date }}</span>
+            </li>
+            <li class="txt-center" style="font-size: 0.9em; margin-top: 1em;">
+              <button (click)="logout()" class="alliot">Cerrar sesión</button>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>

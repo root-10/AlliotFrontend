@@ -1,0 +1,33 @@
+.user-modal {
+  background: white;
+  border: 1px solid black;
+  min-height: 50px;
+  width: 290px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 1;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  .user-triangle {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid black;
+    position: relative;
+    top: -8px;
+    left: calc(100% - 22px);
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid white;
+      position: absolute;
+      top: 1px;
+      left: -7px;
+    }
+  }
+}

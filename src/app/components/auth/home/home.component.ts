@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/services/rest/rest.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CryptojsService } from 'src/app/services/cryptojs/cryptojs.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -33,13 +34,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private _restService: RestService,
-    private _cryptojsService: CryptojsService
+    private _cryptojsService: CryptojsService,
+    private _utilsService: UtilsService
   ) { }
 
   async ngOnInit(): Promise<void> {
     try {
       this.isLoader = true;
-      this.user = this._cryptojsService.decryptStorage('user');
+      this._cryptojsService.decryptStorage('user') ? this.user = this._cryptojsService.decryptStorage('user') : this._utilsService.logout();
       this.data = await Promise.all([this._restService.getRequirementsQuantity(), this._restService.getRequirements(1, this.limit)]);
       this.quantity = this.data[0].quantity;
       this.pages = Math.ceil(this.quantity / this.limit);
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit {
       this.isLoader = false;
     } catch {
       this.isLoader = false;
+      this._utilsService.logout();
     }
   }
 

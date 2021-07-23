@@ -13,17 +13,11 @@ export class HeaderComponent implements OnInit {
   isUserModalVisible: boolean = false;
 
   constructor(
-    private _router: Router,
     public _utilsService: UtilsService
   ) { }
 
   ngOnInit(): void {
     console.log(this.user);
-  }
-
-  async logout(): Promise<void> {
-    localStorage.clear();
-    await this._router.navigateByUrl('login', { replaceUrl: true });
   }
 
 }

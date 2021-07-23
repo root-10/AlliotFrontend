@@ -20,7 +20,7 @@
               Login: <span class="font-medium">{{ user?.login_date }}</span>
             </li>
             <li class="txt-center" style="font-size: 0.9em; margin-top: 1em;">
-              <button (click)="logout()" class="alliot">Cerrar sesión</button>
+              <button (click)="_utilsService.logout()" class="alliot">Cerrar sesión</button>
             </li>
           </ul>
         </div>

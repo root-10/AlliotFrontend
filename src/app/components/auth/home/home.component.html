@@ -47,7 +47,7 @@
       <textarea [(ngModel)]="creationUpdateRequirement.title" rows="1"
         style="resize: vertical; width: 100%; font-size: 2em; border: 1px solid #bdbdbd; border-radius: 2px;"></textarea>
       <ckeditor [(ngModel)]="creationUpdateRequirement.description" [editor]="Editor"></ckeditor>
-      <button class="alliot" (click)="createUpdateRequirement(2)" style="margin-top: 1rem; margin-bottom: 1rem;">Save</button>
+      <button class="alliot" (click)="createUpdateRequirement(2)" style="margin-top: 1rem; margin-bottom: 1rem;">Guardar</button>
     </div>
     <div *ngIf="user.id !== currentRequirement.creator">
       <h1 [innerHTML]="currentRequirement.title"></h1>
@@ -60,11 +60,11 @@
         <img *ngIf="isVoteFound('negative', user.id)" (click)="saveReaction(false)" src="assets/png/sdislike.png" alt="" class="button img-m">
         <img *ngIf="!isVoteFound('negative', user.id)" (click)="saveReaction(false)" src="assets/png/dislike.png" alt="" class="button img-m">
       </div>
-      <button class="alliot" (click)="isCommentSectionVisible = !isCommentSectionVisible">Comment</button>
+      <button class="alliot" (click)="isCommentSectionVisible = !isCommentSectionVisible">Comentario</button>
     </div>
     <div *ngIf="isCommentSectionVisible">
       <ckeditor [(ngModel)]="creationUpdateComment.description" [editor]="Editor"></ckeditor>
-      <button class="alliot" (click)="createComment()" style="margin: 1rem 0 1rem auto;">Save</button>
+      <button class="alliot" (click)="createComment()" style="margin: 1rem 0 1rem auto;">Guardar</button>
     </div>
     <ul style="margin: 0;">
       <li *ngFor="let comment of currentRequirement?.comments" class="col">
@@ -85,7 +85,7 @@
     <textarea [(ngModel)]="creationUpdateRequirement.title" rows="1"
       style="resize: vertical; width: 100%; font-size: 2em; border: 1px solid #bdbdbd; border-radius: 2px;"></textarea>
     <ckeditor [(ngModel)]="creationUpdateRequirement.description" [editor]="Editor"></ckeditor>
-    <button class="alliot" (click)="createUpdateRequirement(1)" style="margin-top: 1rem; margin-bottom: 1rem;">Save</button>
+    <button class="alliot" (click)="createUpdateRequirement(1)" style="margin-top: 1rem; margin-bottom: 1rem;">Guardar</button>
   </div>
 </app-modal>
 <app-modal *ngIf="isLoader">

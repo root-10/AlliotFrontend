@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $soft-black: #999999;
 $white: #fff;
+$blue: #1d6aa8;
 
 @font-face {
   font-family: "quicksand-regular";
@@ -81,6 +82,15 @@ textarea {
 .static {
   position: static;
 }
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.none {
+  display: none;
+}
 .row {
   display: flex;
 }
@@ -126,13 +136,11 @@ textarea {
 .center {
   place-items: center;
 }
-.right {
-  align-items: flex-end;
-  align-content: flex-end;
+.start {
+  place-items: flex-start;
 }
-.left {
-  align-items: flex-start;
-  align-content: flex-start;
+.end {
+  place-items: flex-end;
 }
 .txt-left {
   text-align: left;
@@ -151,12 +159,95 @@ textarea {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+.action {
+  &:hover, &:active {
+    transform: scale(1.1);
+  }
+}
 .button {
+  @extend .select-none;
+  @extend .action;
   outline: none;
   cursor: pointer;
-  @extend .select-none;
+  transition: all 0.1s linear;
 }
-
+.img-s {
+  @extend .inline-block;
+  height: 15px;
+  transition: all 0.1s linear;
+}
+.img-m {
+  @extend .img-s;
+  height: 30px;
+}
+.img-l {
+  @extend .img-s;
+  height: 45px;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opacity-5 {
+  opacity: 0.5;
+}
+.close {
+  @extend .button;
+  @extend .opacity-5;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+}
+button.alliot {
+  @extend .button;
+  @extend .font-medium;
+  display: block;
+  margin: auto;
+  color: $white;
+  background: $blue;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  &:disabled {
+    opacity: 0.4;
+  }
+  &:enabled {
+    @extend .action;
+  }
+}
+button.round {
+  @extend .button;
+  @extend .font-bold;
+  font-size: 1.5em;
+  display: block;
+  color: $white;
+  background: $blue;
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  &:disabled {
+    opacity: 0.4;
+  }
+  &:enabled {
+    @extend .action;
+  }
+}
+app-modal {
+  transition: all 0.1s linear;
+  .container {
+    @extend .relative;
+    border-radius: 5px;
+    background: $white;
+    padding: 1rem 1.5rem 1.5rem;
+    width: 80%;
+    max-width: 720px;
+    min-height: 200px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
 .backdrop {
   @extend .fixed;
   left: 0;
@@ -168,12 +259,12 @@ textarea {
 }
 .card {
   box-shadow: 1px 1px 10px rgb(163 177 198 / 80%);
-  border-radius: 1.5rem;
+  border-radius: 1.2rem;
   .card-title {
     display: block;
     overflow: auto;
     padding: 0 1.5rem;
-    border-radius: 1.5rem 1.5rem 0 0;
+    border-radius: 1.2rem 1.2rem 0 0;
     p,
     h1,
     h2,
@@ -186,7 +277,7 @@ textarea {
   }
   .card-body {
     padding: 0 1.5rem;
-    border-radius: 0 0 1.5rem 1.5rem;
+    border-radius: 0 0 1.2rem 1.2rem;
   }
 }
 .input-adapt {

@@ -77,9 +77,9 @@ export class RestService {
 
   // Requirements solicitudes
 
-  getRequirements(page: number, limit: number): Promise<any> {
+  getRequirements(page: number, limit: number, option: number = 0): Promise<any> {
     return new Promise((resolve, reject) => {
-      this._httpClient.get(`${environment.rest.requirements}?page=${page}&limit=${limit}`).subscribe((value: any) => {
+      this._httpClient.get(`${environment.rest.requirements}?page=${page}&limit=${limit}&option=${option}`).subscribe((value: any) => {
         resolve(value);
       }, (err: any) => {
         reject(err);
@@ -171,7 +171,7 @@ export class RestService {
 
   // Requirements Votes solicitudes
 
-  updateRequirementVotes(id: number, userId: number, old: string, vote: number): Promise<any> {
+  updateRequirementVotes(id: number, userId: number, old: string, vote?: any): Promise<any> {
     return new Promise((resolve, reject) => {
       this._httpClient.patch(`${environment.rest.requirements_votes}/${id}`, { userId, old, vote }).subscribe((value: any) => {
         resolve(value);

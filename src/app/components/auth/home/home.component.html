@@ -6,25 +6,87 @@
         <div class="row center jyct-end txt-center">
           <p style="margin-right: 0.5rem;">Límite: {{ limit }}</p>
           <div class="col center">
-            <img src="assets/png/upwards-arrow.png" alt="" (click)="changeQuantity('more')" class="button" style="height: 10px;">
-            <img src="assets/png/arrow-pointing-downwards.png" alt="" (click)="changeQuantity('less')" class="button" style="height: 10px;">
+            <img src="assets/png/upwards-arrow.png" alt="" (click)="changeQuantity('more')" class="button"
+              style="height: 10px;">
+            <img src="assets/png/arrow-pointing-downwards.png" alt="" (click)="changeQuantity('less')" class="button"
+              style="height: 10px;">
           </div>
         </div>
       </div>
     </div>
-    <div style="width: 100%; padding: 2rem; overflow: auto;" class="card-body">
-      <div *ngFor="let requirement of requirements" class="card-item" style="background: palegoldenrod; display: block; overflow: auto;">
+    <div style="width: 100%; padding: 1rem; overflow: auto;" class="card-body">
+      <select name="" id="" style="display: block; margin: 0 auto 1rem auto; height: 2rem;" (change)="filter($event.target)">
+        <option value="" disabled selected>Ordena Requerimientos</option>
+        <option value="" value="1">Me gusta</option>
+        <option value="" value="2">No me gusta</option>
+        <option value="" value="3">Ascendente</option>
+        <option value="" value="4">Descendente</option>
+      </select>
+      <div *ngFor="let requirement of requirements" class="card-item button"
+        (click)="setCurrentRequirement(requirement)" style="background: whitesmoke; display: block; overflow: auto;">
         <h2>{{ requirement.id }} {{ requirement.title }}</h2>
         <p>{{ requirement.creation_date }}</p>
       </div>
+      <button (click)="isCreatingRequirement = true" class="round" style="position: fixed; right: 7vw; bottom: 7vw;">+</button>
     </div>
   </div>
   <ul class="row">
     <li *ngFor="let page of [].constructor(pages); let x = index;">
-      <a (click)="goToPage(x + 1)" class="button" style="margin: 0 0.5rem" [ngClass]="{ 'font-bold': currentPage === x + 1 }">{{ x + 1 }}</a>
+      <a (click)="setCurrentPage(x + 1)" class="button" style="margin: 0 0.5rem"
+        [ngClass]="{ 'font-bold': currentPage === x + 1 }">{{ x + 1 }}</a>
     </li>
   </ul>
 </main>
+
+<app-modal *ngIf="currentRequirement">
+  <div class="container">
+    <img src="assets/png/close.png" alt="" (click)="setCurrentRequirementAsNull()" class="close button img-m">
+    <h1 class="txt-center" style="padding: 0 1rem; color: #1d6aa8;">Requerimiento {{ currentRequirement.id}}</h1>
+    <div *ngIf="user.id === currentRequirement.creator">
+      <textarea [(ngModel)]="creationUpdateRequirement.title" rows="1"
+        style="resize: vertical; width: 100%; font-size: 2em; border: 1px solid #bdbdbd; border-radius: 2px;"></textarea>
+      <ckeditor [(ngModel)]="creationUpdateRequirement.description" [editor]="Editor"></ckeditor>
+      <button class="alliot" (click)="createUpdateRequirement(2)" style="margin-top: 1rem; margin-bottom: 1rem;">Save</button>
+    </div>
+    <div *ngIf="user.id !== currentRequirement.creator">
+      <h1 [innerHTML]="currentRequirement.title"></h1>
+      <div [innerHTML]="currentRequirement.description"></div>
+    </div>
+    <div class="row jyct-between center options">
+      <div class="row">
+        <img *ngIf="isVoteFound('positive', user.id)" (click)="saveReaction(true)" src="assets/png/slike.png" alt="" class="button img-m">
+        <img *ngIf="!isVoteFound('positive', user.id)" (click)="saveReaction(true)" src="assets/png/like.png" alt="" class="button img-m">
+        <img *ngIf="isVoteFound('negative', user.id)" (click)="saveReaction(false)" src="assets/png/sdislike.png" alt="" class="button img-m">
+        <img *ngIf="!isVoteFound('negative', user.id)" (click)="saveReaction(false)" src="assets/png/dislike.png" alt="" class="button img-m">
+      </div>
+      <button class="alliot" (click)="isCommentSectionVisible = !isCommentSectionVisible">Comment</button>
+    </div>
+    <div *ngIf="isCommentSectionVisible">
+      <ckeditor [(ngModel)]="creationUpdateComment.description" [editor]="Editor"></ckeditor>
+      <button class="alliot" (click)="createComment()" style="margin: 1rem 0 1rem auto;">Save</button>
+    </div>
+    <ul style="margin: 0;">
+      <li *ngFor="let comment of currentRequirement?.comments" class="col">
+        <div class="row end">
+          <img src="assets/png/ICON-V.png" alt="" class="img-m">
+          <h5 style="margin-bottom: 3px; margin-left: 1rem;">{{ comment.user }}</h5>
+        </div>
+        <div [innerHTML]="comment.description"></div><img src="" alt="">
+      </li>
+    </ul>
+  </div>
+</app-modal>
+
+<app-modal *ngIf="isCreatingRequirement">
+  <div class="container">
+    <img src="assets/png/close.png" alt="" (click)="closeCreationModal()" class="close button img-m">
+    <h1 class="txt-center" style="padding: 0 1rem; color: #1d6aa8;">Nuevo requerimiento</h1>
+    <textarea [(ngModel)]="creationUpdateRequirement.title" rows="1"
+      style="resize: vertical; width: 100%; font-size: 2em; border: 1px solid #bdbdbd; border-radius: 2px;"></textarea>
+    <ckeditor [(ngModel)]="creationUpdateRequirement.description" [editor]="Editor"></ckeditor>
+    <button class="alliot" (click)="createUpdateRequirement(1)" style="margin-top: 1rem; margin-bottom: 1rem;">Save</button>
+  </div>
+</app-modal>
 <app-modal *ngIf="isLoader">
   <app-loader [type]="'lds-roller'"></app-loader>
 </app-modal>

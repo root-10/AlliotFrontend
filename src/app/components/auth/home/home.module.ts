@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -32,7 +33,8 @@ export function loginTranslateLoader(http: HttpClient): TranslateHttpLoader {
     }),
     FormsModule,
     ModalModule,
-    LoaderModule
+    LoaderModule,
+    CKEditorModule
   ]
 })
 export class HomeModule { }

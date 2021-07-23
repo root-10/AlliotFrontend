@@ -15,10 +15,10 @@
         <input id="pass" [type]="typeInputPassword" [(ngModel)]="form.pass" maxlength="50"
           (focus)="focusedInput('password', true)" (blur)="focusedInput('password', false)" (keyup.enter)="login()"
           class="input-show-hide">
-        <span *ngIf="typeInputPassword === 'password'" (click)="typeInputPassword = 'text'" class="button">🙉</span>
-        <span *ngIf="typeInputPassword === 'text'" (click)="typeInputPassword = 'password'" class="button">🙈</span>
+        <span *ngIf="typeInputPassword === 'password'" (click)="typeInputPassword = 'text'" class="button opacity-5"><img src="assets/png/show.png" class="img-m" alt="" style="display: inline-block; vertical-align: middle;"></span>
+        <span *ngIf="typeInputPassword === 'text'" (click)="typeInputPassword = 'password'" class="button opacity-5"><img src="assets/png/hide.png" class="img-m" alt="" style="display: inline-block; vertical-align: middle;"></span>
       </div>
-      <button (click)="login()" [disabled]="!form.user && !form.pass" class="adapt m-auto"><span>Ingresar</span></button>
+      <button (click)="login()" [disabled]="!form.user || !form.pass" class="alliot m-auto">Ingresar</button>
     </div>
   </div>
 </main>

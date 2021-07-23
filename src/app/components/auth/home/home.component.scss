@@ -14,6 +14,11 @@
   .card-item {
     padding: 0 1rem;
     border-radius: 0.5rem;
+    transition: all 0.1s linear;
+    &:hover,
+    &:active {
+      transform: scale(1.05);
+    }
   }
   .card-item + .card-item,
   .card + ul {
@@ -26,6 +31,17 @@ ul {
   li  {
     a {
       text-decoration: none;
+    }
+  }
+}
+.options {
+  margin: 2rem 0;
+  button {
+    margin: 0;
+  }
+  .row {
+    img + img {
+      margin-left: 1rem;
     }
   }
 }

@@ -7,6 +7,6 @@ export const environment = {
     users: 'http://localhost:80/users',
     requirements: 'http://localhost:80/requirements',
     requirements_comments: 'http://localhost:80/requirements/comments',
-    requirements_votes: 'http://localhost:80/requirements/vote'
+    requirements_votes: 'http://localhost:80/requirements/votes'
   }
 };

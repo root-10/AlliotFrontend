@@ -47,9 +47,19 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this._cryptojs.encryptStorage('user', data);
         await this._router.navigateByUrl('home', { replaceUrl: true });
-      } catch {
-        console.log('error');
+      } catch (e) {
+        alert(this.handlerError(e.status));
+        this.isLoader = false;
       }
+    }
+  }
+
+  handlerError(status: any): string {
+    switch (status) {
+      case 400:
+        return 'Usuario o contraseña no válidos';
+      default:
+        return 'Sistema en mantención, por favor inténtalo más tarde';
     }
   }
 
